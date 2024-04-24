@@ -1,0 +1,20 @@
+<div class="questions-container">
+  <div *ngIf="questions.length > 0; else loading">
+    <div *ngFor="let question of questions" class="question">
+      <div class="question-content">
+        <div class="question-details">
+          <div class="question-title">{{ question.title }}</div>
+          <div class="question-text">{{ question.text }}</div>
+          <div class="asked-by">Asked by: {{ question.user.username }}</div>
+          <div class="question-time">Time: {{ question.time | date:'medium' }}</div>
+        </div>
+        <div class="question-image">
+          <img src="{{ question.image }}" alt="Question Image" width="100">
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div class="loading">Loading...</div>
+  </ng-template>
+</div>

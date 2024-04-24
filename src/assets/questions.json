@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "user": {
+      "id": 1,
+      "username": "JohnDoe",
+      "email": "john.doe@example.com",
+      "phonenumber": "123-456-7890",
+      "password": "password123",
+      "score": 100
+    },
+    "title": "How to cook pasta?",
+    "text": "I want to learn how to cook pasta. Can someone give me some tips?",
+    "time": "2024-04-16T10:00:00Z",
+    "image": "https://picsum.photos/200"
+  },
+  {
+    "id": 2,
+    "user": {
+      "id": 2,
+      "username": "AliceSmith",
+      "email": "alice.smith@example.com",
+      "phonenumber": "987-654-3210",
+      "password": "qwerty",
+      "score": 75
+    },
+    "title": "Best places to visit in Europe?",
+    "text": "I'm planning a trip to Europe. What are some must-visit places? I'm thinking about Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca Cluj-Napoca",
+    "time": "2024-04-16T11:00:00Z",
+    "image": "https://picsum.photos/200"
+  },
+  {
+    "id": 3,
+    "user": {
+      "id": 3,
+      "username": "BobJohnson",
+      "email": "bob.johnson@example.com",
+      "phonenumber": "555-555-5555",
+      "password": "abcdef",
+      "score": 50
+    },
+    "title": "How to learn Angular?",
+    "text": "I'm new to Angular and want to learn it. Any recommended resources?",
+    "time": "2024-04-16T12:00:00Z",
+    "image": "https://picsum.photos/200"
+  }
+]

@@ -1,0 +1,40 @@
+// users.component.scss
+
+// Container styles
+.users-container {
+  padding: 1rem; // 20px
+}
+
+// User styles
+.user {
+  border: 1px solid #ddd;
+  border-radius: 0.5rem; // 5px
+  margin-bottom: 1rem; // 20px
+  padding: 0.75rem; // 15px
+  background-color: #f9f9f9;
+
+  &:hover {
+    background-color: #eaeaea;
+  }
+}
+
+// Details container for user fields
+.user-details {
+  // Add styles for user details
+}
+
+// Strong styles for labels
+.user-details strong {
+  font-weight: bold;
+}
+
+// Loading styles
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px; /* Adjust height as needed */
+  font-size: 1.5rem; /* Adjust font size as needed */
+  color: #333; /* Adjust text color as needed */
+}
+

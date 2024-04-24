@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div id="mymainheader" class="header" style="font-size:x-large;">
+    Queue Underflow
+    <br>
+    Hello, {{receivedName}}
+  </div>
+
+  <div class="body">
+
+    <div class="menu">Menu
+      <ul>
+        <li><button routerLink="login">Login</button></li>
+        <li><button routerLink="register">Register</button></li>
+        <li><button routerLink="users">Users</button></li>
+        <li><button routerLink="questions">Questions</button></li>
+        <li><button routerLink="answers">Answers</button></li>
+
+      </ul>
+    </div>
+    <div class="content">
+    <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="footer">here is the footer</div>
+</div>

@@ -1,0 +1,41 @@
+.wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  background: green;
+  display: flex;
+  flex-direction: column;
+
+  #mymainheader.header,
+  .header {
+    background: #920005;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .body {
+    flex-grow: 1; /* Let body take remaining space */
+    display: flex;
+  }
+
+  .content {
+    flex-grow: 1; /* Let content take remaining space */
+    background: white;
+    padding: 1rem;
+  }
+
+  .menu {
+    width: 25%;
+    background: #920005;
+    border-top: 0.5rem solid white;
+    padding: 1rem;
+  }
+
+  .footer {
+    background: pink;
+    color: white;
+    text-align: right;
+    padding: 1rem 3rem 1rem 3rem;
+    flex-shrink: 0; /* Prevent footer from shrinking */
+  }
+}

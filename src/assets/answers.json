@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "question": {
+      "id": 1,
+      "user": {
+        "id": 1,
+        "username": "JohnDoe",
+        "email": "john.doe@example.com",
+        "phonenumber": "1234567890",
+        "password": "password123",
+        "score": 100
+      },
+      "title": "How to install Angular CLI?",
+      "text": "I'm new to Angular and I need help installing Angular CLI.",
+      "time": "2024-04-16T12:00:00Z",
+      "image": "https://picsum.photos/200"
+    },
+    "user": {
+      "id": 2,
+      "username": "JaneDoe",
+      "email": "jane.doe@example.com",
+      "phonenumber": "0987654321",
+      "password": "password456",
+      "score": 150
+    },
+    "title": "Here's how to install Angular CLI",
+    "text": "You can install Angular CLI using npm. First, make sure you have Node.js installed. Then run the command: npm install -g @angular/cli",
+    "time": "2024-04-17T10:00:00Z",
+    "image": "https://picsum.photos/200"
+  },
+  {
+    "id": 2,
+    "question": {
+      "id": 2,
+      "user": {
+        "id": 2,
+        "username": "JaneDoe",
+        "email": "jane.doe@example.com",
+        "phonenumber": "0987654321",
+        "password": "password456",
+        "score": 150
+      },
+      "title": "How to deploy an Angular app?",
+      "text": "I want to deploy my Angular app to a production server. Any tips?",
+      "time": "2024-04-15T09:30:00Z",
+      "image": "https://picsum.photos/200"
+    },
+    "user": {
+      "id": 1,
+      "username": "JohnDoe",
+      "email": "john.doe@example.com",
+      "phonenumber": "1234567890",
+      "password": "password123",
+      "score": 100
+    },
+    "title": "You can deploy an Angular app using Firebase Hosting",
+    "text": "Firebase Hosting is a great option for deploying Angular apps. It's easy to set up and provides fast and reliable hosting.",
+    "time": "2024-04-18T15:30:00Z",
+    "image": "https://picsum.photos/200"
+  }
+]

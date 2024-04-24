@@ -1,0 +1,101 @@
+// Define a variable for base font size
+$base-font-size: 16px;
+
+// Container styles
+.answers-container {
+  padding: 1rem; // 20px
+}
+
+// Answer styles
+.answer {
+  display: flex; // Use flexbox for layout
+  align-items: flex-start; // Align items at the start of the flex container
+  border: 1px solid #ddd;
+  border-radius: 0.5rem; // 5px
+  margin-bottom: 1rem; // 20px
+  padding: 0.75rem; // 15px
+  background-color: #f9f9f9;
+  flex-grow: 1;
+
+  &:hover {
+    background-color: #eaeaea;
+  }
+
+  // Content container for text fields
+  .answer-content {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+  .answer-question{
+    flex-grow: 1;
+  }
+  // Question title styles
+  .answer-question-title {
+    font-size: 1.125rem; // 18px
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.625rem; // 10px
+  }
+
+  // Question author styles
+  .answer-question-author {
+    color: #888;
+    font-style: italic;
+    margin-bottom: 0.625rem; // 10px
+  }
+
+  // Details container for text fields
+  .answer-details {
+    flex-grow: 1; // Take up remaining space
+  }
+
+  // Image container
+  .answer-image {
+    margin-left: 1rem; // Add space between text and image
+    flex-shrink: 0; // Prevent image from shrinking
+  }
+}
+
+// Title styles
+.answer-title {
+  font-size: 1.125rem; // 18px
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 0.625rem; // 10px
+}
+
+// Text styles
+.answer-text {
+  color: #666;
+  margin-bottom: 0.625rem; // 10px
+}
+
+// Answered by styles
+.answered-by {
+  color: #888;
+  font-style: italic;
+}
+
+// Time styles
+.answer-time {
+  color: #888;
+  font-size: 0.875rem; // 14px
+}
+
+// Image styles
+.answer-image img {
+  border-radius: 0.5rem; // 5px
+  margin-top: 0.625rem; // 10px
+  width: 6.25rem; // 100px
+}
+
+// Loading styles
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px; /* Adjust height as needed */
+  font-size: 1.5rem; /* Adjust font size as needed */
+  color: #333; /* Adjust text color as needed */
+}

@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "username": "JohnDoe",
+    "email": "john.doe@example.com",
+    "phonenumber": "123-456-7890",
+    "password": "password123",
+    "score": 100
+  },
+  {
+    "id": 2,
+    "username": "AliceSmith",
+    "email": "alice.smith@example.com",
+    "phonenumber": "987-654-3210",
+    "password": "qwerty",
+    "score": 75
+  },
+  {
+    "id": 3,
+    "username": "BobJohnson",
+    "email": "bob.johnson@example.com",
+    "phonenumber": "555-555-5555",
+    "password": "abcdef",
+    "score": 50
+  },
+  {
+    "id": 4,
+    "username": "EmilyBrown",
+    "email": "emily.brown@example.com",
+    "phonenumber": "333-333-3333",
+    "password": "password123",
+    "score": 80
+  },
+  {
+    "id": 5,
+    "username": "MichaelJones",
+    "email": "michael.jones@example.com",
+    "phonenumber": "777-777-7777",
+    "password": "abc123",
+    "score": 90
+  },
+  {
+    "id": 6,
+    "username": "test",
+    "email": "test@test.com",
+    "phonenumber": "777-777-7777",
+    "password": "test",
+    "score": 0
+  }
+]

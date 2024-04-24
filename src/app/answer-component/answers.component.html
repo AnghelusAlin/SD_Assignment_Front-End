@@ -1,0 +1,24 @@
+<div class="answers-container">
+  <div *ngIf="answers.length > 0; else loading">
+    <div *ngFor="let answer of answers" class="answer">
+      <div class="answer-content">
+        <div class="answer-question">
+          <div class = "answer-question-title">{{ answer.question.title }}</div>
+          <div class = "answer-question-author">{{ answer.question.user.username }}</div>
+        </div>
+        <div class="answer-details">
+          <div class="answer-title">{{ answer.title }}</div>
+          <div class="answer-text">{{ answer.text }}</div>
+          <div class="answered-by">Answered by: {{ answer.user.username }}</div>
+          <div class="answer-time">Time: {{ answer.time | date:'medium' }}</div>
+        </div>
+        <div class="answer-image">
+          <img src="{{ answer.image }}" alt="Answer Image" width="100">
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #loading>
+    <div class="loading">Loading...</div>
+  </ng-template>
+</div>
