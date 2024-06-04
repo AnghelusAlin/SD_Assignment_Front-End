@@ -12,6 +12,7 @@ import { UsersComponent } from './user-component/users.component';
 import { QuestionsComponent } from './question-component/questions.component';
 import { AnswersComponent } from './answer-component/answers.component';
 import { RegisterComponent } from './register-component/register.component';
+import { QuestionViewComponent } from './question-view/question-view.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RegisterComponent } from './register-component/register.component';
     UsersComponent,
     QuestionsComponent,
     AnswersComponent,
-    RegisterComponent
+    RegisterComponent,
+    QuestionViewComponent
   ],
   imports: [
     HttpClientModule,

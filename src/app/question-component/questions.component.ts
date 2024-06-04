@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { QuestionService } from '../services/question.service';
 import { TagService } from '../services/tag.service';
 import { UserService } from '../services/user.service';
+import {TagModel} from "../entities/tag.model";
 
 @Component({
   selector: 'app-question-component',
@@ -11,7 +12,7 @@ import { UserService } from '../services/user.service';
 export class QuestionsComponent implements OnInit {
   questions: any[] = [];
   filteredQuestions: any[] = [];
-  tags: string[] = [];
+  tags: any[] = [];
   users: any[] = [];
   searchTitle: string = '';
   selectedTag: string = '';
@@ -48,16 +49,13 @@ export class QuestionsComponent implements OnInit {
 
   filterQuestions() {
     this.filteredQuestions = this.questions.filter(question => {
-      return (!this.searchTitle || question.title.includes(this.searchTitle)) &&
-        (!this.selectedTag || question.tags.includes(this.selectedTag)) &&
-        (!this.selectedUser || question.user.username === this.selectedUser);
+      const isTitleMatch = !this.searchTitle || question.title.includes(this.searchTitle);
+      const isTagMatch = !this.selectedTag || question.tags.some((tag: TagModel) => tag?.text === this.selectedTag);
+      const isUserMatch = !this.selectedUser || question.user?.username === this.selectedUser; // Use optional chaining here
+      return isTitleMatch && isTagMatch && isUserMatch;
     });
   }
 
-  showMyQuestions() {
-    this.selectedUser = this.currentUser;
-    this.filterQuestions();
-  }
 
   resetFilters() {
     this.searchTitle = '';

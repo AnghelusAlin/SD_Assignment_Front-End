@@ -22,6 +22,16 @@ export class QuestionService {
     );
   }
 
+  getQuestionById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiBaseUrl}/getById`, { params: { id: id.toString() } }).pipe(
+      tap(data => console.log('Question:', data)),
+      catchError(error => {
+        console.error('Error fetching question:', error);
+        return throwError(error);
+      })
+    );
+  }
+
   insertQuestion(question: any): Observable<any> {
     return this.http.post<any>(`${this.apiBaseUrl}/insertQuestion`, question).pipe(
       tap(data => console.log('Inserted Question:', data)),

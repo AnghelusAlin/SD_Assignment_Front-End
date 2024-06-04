@@ -4,7 +4,7 @@
 
     <select [(ngModel)]="selectedTag" (change)="filterQuestions()">
       <option value="">Filter by tag</option>
-      <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
+      <option *ngFor="let tag of tags" [value]="tag">{{ tag.text }}</option>
     </select>
 
     <select [(ngModel)]="selectedUser" (change)="filterQuestions()">
@@ -12,27 +12,29 @@
       <option *ngFor="let user of users" [value]="user.username">{{ user.username }}</option>
     </select>
 
-    <button (click)="showMyQuestions()">Show My Questions</button>
+    <button (click)="resetFilters()">Reset Filters</button>
   </div>
 
   <div *ngIf="filteredQuestions.length > 0; else loading">
     <div *ngFor="let question of filteredQuestions" class="question">
       <div class="question-content">
         <div class="question-details">
-          <div class="question-title">
-            <a [routerLink]="['/questions', question.id]">{{ question.title }}</a>
-          </div>
+          <div class="question-title">{{ question.title }}</div>
           <div class="question-text">{{ question.text }}</div>
-          <div class="asked-by">Asked by: {{ question.user.username }}</div>
+          <div class="asked-by">Asked by: {{ question.user?.username }}</div>
           <div class="question-time">Time: {{ question.time | date:'medium' }}</div>
+          <div class="question-tags">Tags:
+            <span *ngFor="let tag of question.tags">{{ tag.text }}</span>
+          </div>
         </div>
         <div class="question-image">
           <img [src]="question.image" alt="Question Image" width="100">
         </div>
       </div>
+      <a [routerLink]="['/question', question.id]">View Question</a>
     </div>
   </div>
   <ng-template #loading>
-    <div class="loading">Loading...</div>
+    <div class="loading">No questions here...</div>
   </ng-template>
 </div>
