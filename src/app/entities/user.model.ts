@@ -5,4 +5,6 @@ export class UserModel{
   phonenumber: string = "0700 000 000"
   password: string = "dummy"
   score: number = 0
+  moderator: boolean = false
+  banned: boolean = false
 }

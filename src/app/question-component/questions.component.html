@@ -1,15 +1,33 @@
 <div class="questions-container">
-  <div *ngIf="questions.length > 0; else loading">
-    <div *ngFor="let question of questions" class="question">
+  <div class="filter-container">
+    <input type="text" placeholder="Search by title" [(ngModel)]="searchTitle" (input)="filterQuestions()" />
+
+    <select [(ngModel)]="selectedTag" (change)="filterQuestions()">
+      <option value="">Filter by tag</option>
+      <option *ngFor="let tag of tags" [value]="tag">{{ tag }}</option>
+    </select>
+
+    <select [(ngModel)]="selectedUser" (change)="filterQuestions()">
+      <option value="">Filter by user</option>
+      <option *ngFor="let user of users" [value]="user.username">{{ user.username }}</option>
+    </select>
+
+    <button (click)="showMyQuestions()">Show My Questions</button>
+  </div>
+
+  <div *ngIf="filteredQuestions.length > 0; else loading">
+    <div *ngFor="let question of filteredQuestions" class="question">
       <div class="question-content">
         <div class="question-details">
-          <div class="question-title">{{ question.title }}</div>
+          <div class="question-title">
+            <a [routerLink]="['/questions', question.id]">{{ question.title }}</a>
+          </div>
           <div class="question-text">{{ question.text }}</div>
           <div class="asked-by">Asked by: {{ question.user.username }}</div>
           <div class="question-time">Time: {{ question.time | date:'medium' }}</div>
         </div>
         <div class="question-image">
-          <img src="{{ question.image }}" alt="Question Image" width="100">
+          <img [src]="question.image" alt="Question Image" width="100">
         </div>
       </div>
     </div>
