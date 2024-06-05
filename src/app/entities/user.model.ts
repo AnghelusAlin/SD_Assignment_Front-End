@@ -1,5 +1,5 @@
 export class UserModel{
-  userId: number = 1
+  userId: number | undefined
   username: string = "Dummy"
   email: string = "dummy.mail.com"
   phoneNumber: string = "0700 000 000"

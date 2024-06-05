@@ -1,7 +1,7 @@
 import {UserModel} from "./user.model";
 
 export class QuestionModel{
-  questionId: number = 1
+  questionId: number | undefined
   user: UserModel | undefined
   title:  string  = "dummy title"
   text:   string  = "dummy text"

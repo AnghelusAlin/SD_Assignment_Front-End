@@ -21,7 +21,15 @@ export class TagService {
       })
     );
   }
-
+  getTagsOfQuestion(id: any): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiBaseUrl}/getTagsOfQuestion/${id}`).pipe(
+      tap(data => console.log('Tags:', data)),
+      catchError(error => {
+        console.error('Error fetching tags:', error);
+        return throwError(error);
+      })
+    );
+  }
   insertTag(tag: any): Observable<any> {
     return this.http.post<any>(`${this.apiBaseUrl}/insertTag`, tag).pipe(
       tap(data => console.log('Inserted Tag:', data)),

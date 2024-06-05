@@ -10,6 +10,9 @@
         <div><strong>Score:</strong> {{ user.score }}</div>
         <div><strong>Moderator:</strong> {{ user.moderator ? 'Yes' : 'No' }}</div>
         <div><strong>Banned:</strong> {{ user.banned ? 'Yes' : 'No' }}</div>
+        <button *ngIf="userService.currentUser?.moderator" (click)="toggleBan(user)">
+          {{ user.banned ? 'Unban' : 'Ban' }}
+        </button>
       </div>
     </div>
   </div>

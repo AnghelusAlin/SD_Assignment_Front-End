@@ -23,7 +23,7 @@ export class QuestionService {
   }
 
   getQuestionById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiBaseUrl}/getById`, { params: { id: id.toString() } }).pipe(
+    return this.http.get<any>(`${this.apiBaseUrl}/getQuestionById`, { params: { id: id.toString() } }).pipe(
       tap(data => console.log('Question:', data)),
       catchError(error => {
         console.error('Error fetching question:', error);

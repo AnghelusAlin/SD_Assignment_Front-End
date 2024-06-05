@@ -9,8 +9,11 @@ import { UserModel } from '../entities/user.model';
 })
 export class UsersComponent implements OnInit {
   users: UserModel[] = [];
+  public userService: UserService;
 
-  constructor(private userService: UserService) { }
+  constructor(userService: UserService) {
+    this.userService = userService;
+  }
 
   ngOnInit(): void {
     this.fetchUsers();
@@ -19,8 +22,20 @@ export class UsersComponent implements OnInit {
   fetchUsers() {
     this.userService.getUsers().subscribe(data => {
       this.users = data;
-      console.log(this.users)
     });
+  }
 
+  toggleBan(user: UserModel): void {
+    if (user.banned) {
+      this.userService.unbanUser(user).subscribe(() => {
+        console.log('User unbanned successfully:', user.username);
+        user.banned = false;
+      });
+    } else {
+      this.userService.banUser(user).subscribe(() => {
+        console.log('User banned successfully:', user.username);
+        user.banned = true;
+      });
+    }
   }
 }

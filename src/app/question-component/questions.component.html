@@ -25,11 +25,6 @@
           <div class="asked-by">Asked by: {{ question.user?.username }}</div>
           <div class="asked-by">Score: {{question.user?.score}}</div>
           <div class="question-time">Time: {{ question.time | date:'medium' }}</div>
-          <div class="question-tags">Tags:
-            <span *ngIf="questionTags[question.id]">
-              <span *ngFor="let tag of questionTags[question.id]">{{ tag.text }}</span>
-            </span>
-          </div>
         </div>
         <div class="question-image">
           <img [src]="question.image" alt="Question Image" width="100">

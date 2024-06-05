@@ -1,4 +1,4 @@
 export class TagModel{
-  tagId: number = 1
+  tagId: number | undefined
   text: string = "dummy tag"
 }

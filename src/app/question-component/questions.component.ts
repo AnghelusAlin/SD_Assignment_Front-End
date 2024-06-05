@@ -38,12 +38,16 @@ export class QuestionsComponent implements OnInit {
 
   fetchQuestions() {
     this.questionService.getQuestions().subscribe(data => {
-      this.questions = data;
-      this.filteredQuestions = data; // Initialize filteredQuestions with all questions
-      this.filterQuestions(); // Apply initial filtering
+      this.questions = data.sort((a, b) => {
+        const timeA = new Date(a.time);
+        const timeB = new Date(b.time);
+        return timeB.getTime() - timeA.getTime();
+      });
+      this.filteredQuestions = this.questions.slice();
+      this.filterQuestions();
     });
-    console.log(this.questions)
   }
+
 
   fetchTags() {
     this.tagService.getTags().subscribe(data => {

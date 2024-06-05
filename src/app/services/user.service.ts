@@ -18,9 +18,12 @@ export class UserService {
       catchError(this.handleError)
     );
   }
-
-  // Other methods...
-
+  banUser(user: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/banUser`, user);
+  }
+  unbanUser(user: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/unbanUser`, user);
+  }
   login(user: any): Observable<any> {
     return this.getUsers().pipe(
       switchMap(users => {
@@ -55,7 +58,6 @@ export class UserService {
 
   logout() {
     this.currentUser = null;
-    // Optionally, you can emit a logout event if needed
   }
 
   private handleError(error: any): Observable<never> {
