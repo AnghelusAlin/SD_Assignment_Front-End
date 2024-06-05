@@ -23,8 +23,9 @@ export class AnswerService {
     );
   }
 
-  getAnswersOfQuestion(questionId: number): Observable<AnswerModel[]> {
-    return this.http.get<AnswerModel[]>(`${this.apiBaseUrl}/getAnswersOfQuestion?questionId=${questionId}`).pipe(
+  getAnswersOfQuestion(questionId: number): Observable<any[]> {
+    const url = `${this.apiBaseUrl}/question/${questionId}`;
+    return this.http.get<any[]>(url).pipe(
       tap(data => console.log('Answers:', data)),
       catchError(error => {
         console.error('Error fetching answers:', error);

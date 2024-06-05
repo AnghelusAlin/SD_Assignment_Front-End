@@ -7,15 +7,18 @@ import {QuestionsComponent} from "./question-component/questions.component";
 import {AnswersComponent} from "./answer-component/answers.component";
 import {RegisterComponent} from "./register-component/register.component";
 import {QuestionViewComponent} from "./question-view/question-view.component";
+import {AuthGuard} from "./auth.guard";
+import {QuestionFormComponent} from "./question-form/question-form.component";
 
 const routes: Routes = [
-  {path:"question:/id", component: QuestionViewComponent},
+  {path:"question/:id", component: QuestionViewComponent, canActivate: [AuthGuard]},
   {path:"login", component: LoginComponent},
   {path:"register", component: RegisterComponent},
-  {path:"users", component: UsersComponent},
-  {path:"questions", component: QuestionsComponent},
-  {path:"answers", component: AnswersComponent},
-  {path:"test", component: TestComponent}
+  {path:"users", component: UsersComponent, canActivate: [AuthGuard]},
+  {path:"questions", component: QuestionsComponent, canActivate: [AuthGuard]},
+  {path:"answers", component: AnswersComponent, canActivate: [AuthGuard]},
+  {path:"test", component: TestComponent, canActivate: [AuthGuard]},
+  {path:"add-question", component: QuestionFormComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

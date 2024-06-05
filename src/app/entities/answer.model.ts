@@ -2,7 +2,7 @@ import {UserModel} from "./user.model";
 import {QuestionModel} from "./question.model";
 
 export class AnswerModel{
-  id: number = 1
+  answerId: number = 1
   question: QuestionModel | undefined
   user: UserModel | undefined
   title:  string = "dummy title"

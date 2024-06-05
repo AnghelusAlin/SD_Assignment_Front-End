@@ -19,7 +19,11 @@ export class AppComponent {
   }
 
   handleEmit(value: string) {
-    this.receivedName = value;
-
+    let user = this.userService.currentUser
+    if(user.banned){
+      this.receivedName = "BANNED PERSON"
+    }else{
+      this.receivedName = value;
+    }
   }
 }

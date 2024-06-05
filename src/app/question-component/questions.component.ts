@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from '../services/question.service';
+import { QuestionTagService } from '../services/questiontag.service';
 import { TagService } from '../services/tag.service';
 import { UserService } from '../services/user.service';
 import {TagModel} from "../entities/tag.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-question-component',
@@ -14,17 +16,24 @@ export class QuestionsComponent implements OnInit {
   filteredQuestions: any[] = [];
   tags: any[] = [];
   users: any[] = [];
+  questionTags: any[] = [];
+  questionTagsMap: { [key: number]: TagModel[] } = {};
   searchTitle: string = '';
   selectedTag: string = '';
   selectedUser: string = '';
   currentUser: string = 'currentUser'; // Replace with the actual current user's username
 
-  constructor(private questionService: QuestionService, private tagService: TagService, private userService: UserService) { }
+  constructor(private questionService: QuestionService,
+              private tagService: TagService,
+              private userService: UserService,
+              private questionTagService: QuestionTagService,
+              private router : Router) { }
 
   ngOnInit(): void {
     this.fetchQuestions();
     this.fetchTags();
     this.fetchUsers();
+    this.fetchQuestionTags();
   }
 
   fetchQuestions() {
@@ -33,6 +42,7 @@ export class QuestionsComponent implements OnInit {
       this.filteredQuestions = data; // Initialize filteredQuestions with all questions
       this.filterQuestions(); // Apply initial filtering
     });
+    console.log(this.questions)
   }
 
   fetchTags() {
@@ -46,7 +56,17 @@ export class QuestionsComponent implements OnInit {
       this.users = data;
     });
   }
-
+  fetchQuestionTags() {
+    this.questionTagService.getQuestionTags().subscribe(data => {
+      data.forEach(questionTag => {
+        const questionId = questionTag.question.questionId;
+        if (!this.questionTagsMap[questionId]) {
+          this.questionTagsMap[questionId] = [];
+        }
+        this.questionTagsMap[questionId].push(questionTag.tag);
+      });
+    });
+  }
   filterQuestions() {
     this.filteredQuestions = this.questions.filter(question => {
       const isTitleMatch = !this.searchTitle || question.title.includes(this.searchTitle);
@@ -55,8 +75,11 @@ export class QuestionsComponent implements OnInit {
       return isTitleMatch && isTagMatch && isUserMatch;
     });
   }
-
-
+  goToQuestion(question: any): void {
+    if (question && question.questionId) {
+      this.router.navigate(['/question', question.questionId]);
+    }
+  }
   resetFilters() {
     this.searchTitle = '';
     this.selectedTag = '';

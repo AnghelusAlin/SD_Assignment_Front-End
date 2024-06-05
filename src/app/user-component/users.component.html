@@ -2,12 +2,14 @@
   <div *ngIf="users.length > 0; else loading">
     <div *ngFor="let user of users" class="user">
       <div class="user-details">
-        <div><strong>ID:</strong> {{ user.id }}</div>
+        <div><strong>ID:</strong> {{ user.userId }}</div>
         <div><strong>Username:</strong> {{ user.username }}</div>
         <div><strong>Email:</strong> {{ user.email }}</div>
-        <div><strong>Phone Number:</strong> {{ user.phonenumber }}</div>
+        <div><strong>Phone Number:</strong> {{ user.phoneNumber }}</div>
         <div><strong>Password:</strong> {{ user.password }}</div>
         <div><strong>Score:</strong> {{ user.score }}</div>
+        <div><strong>Moderator:</strong> {{ user.moderator ? 'Yes' : 'No' }}</div>
+        <div><strong>Banned:</strong> {{ user.banned ? 'Yes' : 'No' }}</div>
       </div>
     </div>
   </div>

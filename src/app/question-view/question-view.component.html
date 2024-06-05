@@ -1,1 +1,22 @@
-<p>question-view works!</p>
+<div *ngIf="question">
+  <h2>{{ question.title }}</h2>
+  <p>{{ question.text }}</p>
+  <p>Asked by: {{ question.user?.username }}</p>
+  <p>Time: {{ question.time | date }}</p>
+  <img [src]="question.image" alt="Question Image" width="200">
+</div>
+
+<div *ngIf="answers && answers.length > 0">
+  <h3>Answers:</h3>
+  <div *ngFor="let answer of answers">
+    <h4>{{ answer.title }}</h4>
+    <p>{{ answer.text }}</p>
+    <p>Answered by: {{ answer.user?.username }}</p>
+    <p>Time: {{ answer.time | date }}</p>
+    <img [src]="answer.image" alt="Answer Image" width="200">
+  </div>
+</div>
+
+<div *ngIf="!question && (!answers || answers.length === 0)">
+  <p>No question or answers found.</p>
+</div>

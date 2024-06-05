@@ -18,20 +18,24 @@
   <div *ngIf="filteredQuestions.length > 0; else loading">
     <div *ngFor="let question of filteredQuestions" class="question">
       <div class="question-content">
+        <button (click)="goToQuestion(question)">View Answers</button>
         <div class="question-details">
           <div class="question-title">{{ question.title }}</div>
           <div class="question-text">{{ question.text }}</div>
           <div class="asked-by">Asked by: {{ question.user?.username }}</div>
+          <div class="asked-by">Score: {{question.user?.score}}</div>
           <div class="question-time">Time: {{ question.time | date:'medium' }}</div>
           <div class="question-tags">Tags:
-            <span *ngFor="let tag of question.tags">{{ tag.text }}</span>
+            <span *ngIf="questionTags[question.id]">
+              <span *ngFor="let tag of questionTags[question.id]">{{ tag.text }}</span>
+            </span>
           </div>
         </div>
         <div class="question-image">
           <img [src]="question.image" alt="Question Image" width="100">
         </div>
       </div>
-      <a [routerLink]="['/question', question.id]">View Question</a>
+
     </div>
   </div>
   <ng-template #loading>
