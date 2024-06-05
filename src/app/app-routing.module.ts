@@ -10,6 +10,7 @@ import {QuestionViewComponent} from "./question-view/question-view.component";
 import {AuthGuard} from "./auth.guard";
 import {QuestionFormComponent} from "./question-form/question-form.component";
 import {TagCreateComponent} from "./tag-create/tag-create.component";
+import {AddAnswerComponent} from "./add-answer/add-answer.component";
 
 const routes: Routes = [
   {path:"question/:id", component: QuestionViewComponent, canActivate: [AuthGuard]},
@@ -19,8 +20,9 @@ const routes: Routes = [
   {path:"questions", component: QuestionsComponent, canActivate: [AuthGuard]},
   {path:"answers", component: AnswersComponent, canActivate: [AuthGuard]},
   {path:"test", component: TestComponent, canActivate: [AuthGuard]},
-  {path:"add-question", component: QuestionFormComponent, canActivate: [AuthGuard]},
+  {path:"add-question/:optional", component: QuestionFormComponent, canActivate: [AuthGuard]},
   {path:"add-tag", component: TagCreateComponent, canActivate: [AuthGuard]},
+  {path:"add-answer/:id", component: AddAnswerComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

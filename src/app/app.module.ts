@@ -15,6 +15,7 @@ import { RegisterComponent } from './register-component/register.component';
 import { QuestionViewComponent } from './question-view/question-view.component';
 import { QuestionFormComponent } from './question-form/question-form.component';
 import { TagCreateComponent } from './tag-create/tag-create.component';
+import { AddAnswerComponent } from './add-answer/add-answer.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { TagCreateComponent } from './tag-create/tag-create.component';
     RegisterComponent,
     QuestionViewComponent,
     QuestionFormComponent,
-    TagCreateComponent
+    TagCreateComponent,
+    AddAnswerComponent
   ],
     imports: [
         HttpClientModule,

@@ -1,7 +1,7 @@
 import {UserModel} from "./user.model";
 import {QuestionModel} from "./question.model";
 
-export class AnswerLikeModel{
+export class QuestionLikeModel{
   likeId: number | undefined
   user: UserModel | undefined
   question: QuestionModel | undefined

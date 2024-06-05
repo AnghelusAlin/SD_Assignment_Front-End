@@ -19,12 +19,18 @@
     <div *ngFor="let question of filteredQuestions" class="question">
       <div class="question-content">
         <button (click)="goToQuestion(question)">View Answers</button>
+        <button (click)="goToAddAnswer(question.questionId)">Add Answer</button>
+        <button *ngIf="isCurrentUserAuthorOrModerator(question)" (click)="editQuestion(question)">Edit Question</button>
         <div class="question-details">
           <div class="question-title">{{ question.title }}</div>
           <div class="question-text">{{ question.text }}</div>
           <div class="asked-by">Asked by: {{ question.user?.username }}</div>
           <div class="asked-by">Score: {{question.user?.score}}</div>
           <div class="question-time">Time: {{ question.time | date:'medium' }}</div>
+        </div>
+        <div *ngIf="!isCurrentUserAuthor(question)">
+          <button [class.upvoted]="isUpvoted(question)" (click)="voteQuestion(question, 1)">Upvote</button>
+          <button [class.downvoted]="isDownvoted(question)" (click)="voteQuestion(question, -1)">Downvote</button>
         </div>
         <div class="question-image">
           <img [src]="question.image" alt="Question Image" width="100">

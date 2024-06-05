@@ -5,9 +5,10 @@ import { AnswerService } from '../services/answer.service';
 import { UserService } from '../services/user.service';
 import { TagService } from '../services/tag.service';
 import { TagModel } from '../entities/tag.model';
-import { HttpErrorResponse } from '@angular/common/http';
+import {AnswerModel} from "../entities/answer.model";
 import {QuestionTagService} from "../services/questiontag.service";
 import {QuestiontagModel} from "../entities/questiontag.model";
+
 
 @Component({
   selector: 'app-question-view',
@@ -21,16 +22,16 @@ export class QuestionViewComponent implements OnInit {
   tags: TagModel[] = [];
   tagsOfQuestion: TagModel[] = [];
   selectedTag: string = '';
-  currentUser: any; // Current user information
+  currentUser: any;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private questionService: QuestionService,
     private answerService: AnswerService,
+    private questionTagService: QuestionTagService,
     private userService: UserService,
     private tagService: TagService,
-    private questionTagService: QuestionTagService,
   ) { }
 
   ngOnInit(): void {
@@ -62,10 +63,10 @@ export class QuestionViewComponent implements OnInit {
   fetchTagsOfQuestion() {
     this.tagService.getTagsOfQuestion(this.questionId).subscribe(tags => {
       this.tagsOfQuestion = tags;
-      console.log(tags)
     });
   }
-  fetchTags(){
+
+  fetchTags() {
     this.tagService.getTags().subscribe(tags => {
       this.tags = tags;
     });
@@ -75,39 +76,18 @@ export class QuestionViewComponent implements OnInit {
     return this.currentUser && (this.currentUser.username === entity.user?.username || this.currentUser.moderator);
   }
 
-  addTag() {
-    if (this.selectedTag) {
-      const tagToAdd = this.tags.find(tag => tag.text === this.selectedTag);
-      if (tagToAdd) {
-        let questionTag = new QuestiontagModel();
-        questionTag.question = this.question
-        questionTag.tagId = tagToAdd
-        this.questionTagService.insertQuestionTag(questionTag).subscribe(() => {
-          console.log('Tag added successfully');
-          this.loadQuestion();
-        }, error => {
-          console.error('Error adding tag:', error);
-        });
-      }
-    }
-  }
-
   deleteQuestion() {
-    this.questionService.deleteQuestion(this.question.questionId).subscribe(
+    this.questionService.deleteQuestion(this.question.id).subscribe(
       () => {
         console.log('Question deleted successfully!');
         this.router.navigate(['/questions']);
       },
       error => {
-        if (error instanceof HttpErrorResponse && error.status === 200) {
-          console.log('Question deleted successfully!');
-          this.router.navigate(['/questions']);
-        } else {
-          console.error('Error deleting question:', error);
-        }
+        console.error('Error deleting question:', error);
       }
     );
   }
+
   deleteAnswer(answerId: number) {
     this.answerService.deleteAnswer(answerId).subscribe(
       () => {
@@ -118,5 +98,34 @@ export class QuestionViewComponent implements OnInit {
         console.error('Error deleting answer:', error);
       }
     );
+  }
+
+  addTag(): void {
+    console.log(this.selectedTag);
+    const existingTag = this.tags.find(tag => tag.text === this.selectedTag);
+    if(existingTag) {
+      let questionTag :QuestiontagModel = new QuestiontagModel();
+      questionTag.question = this.question
+      questionTag.tagId = existingTag
+
+      this.questionTagService.insertQuestionTag(questionTag).subscribe(
+        () => {
+          console.log('Tag added successfully!');
+          this.selectedTag = '';
+          this.fetchTagsOfQuestion();
+        },
+        error => {
+          console.error('Error adding tag:', error);
+        }
+      );
+    }
+  }
+  editAnswer(answer: AnswerModel):void{
+    if(answer.answerId){
+      this.deleteAnswer(answer.answerId)
+    }
+    if(this.question.questionId){
+      this.router.navigate(['/add-answer', this.question.questionId]);
+    }
   }
 }

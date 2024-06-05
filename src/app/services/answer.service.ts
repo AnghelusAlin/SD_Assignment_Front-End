@@ -44,8 +44,8 @@ export class AnswerService {
     );
   }
 
-  updateAnswer(answer: any): Observable<any> {
-    return this.http.put<any>(`${this.apiBaseUrl}/updateAnswer`, answer).pipe(
+  updateAnswer(answer: AnswerModel): Observable<AnswerModel> {
+    return this.http.put<AnswerModel>(`${this.apiBaseUrl}/updateAnswer`, answer).pipe(
       tap(data => console.log('Updated Answer:', data)),
       catchError(error => {
         console.error('Error updating answer:', error);

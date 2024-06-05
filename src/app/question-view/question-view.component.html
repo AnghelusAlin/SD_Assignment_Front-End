@@ -4,7 +4,6 @@
   <p>Asked by: {{ question.user?.username }}</p>
   <p>Time: {{ question.time | date }}</p>
   <img [src]="question.image" alt="Question Image" width="200">
-
   <div *ngIf="tagsOfQuestion && tagsOfQuestion.length > 0">
     <h3>Tags:</h3>
     <ul>
@@ -30,6 +29,8 @@
     <p>Score: {{ answer.user?.score }}</p>
     <p>Time: {{ answer.time | date }}</p>
     <img [src]="answer.image" alt="Answer Image" width="200">
+
+    <button *ngIf="isModeratorOrAuthor(answer)" (click)="editAnswer(answer)">Edit Answer</button>
     <button *ngIf="isModeratorOrAuthor(answer)" (click)="deleteAnswer(answer.answerId)">Delete Answer</button>
   </div>
 </div>
